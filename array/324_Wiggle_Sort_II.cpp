@@ -44,7 +44,7 @@ int main(){
 
     vector<int> ans(n,0);
 
-     int left = mid - 1;  
+    int left = mid - 1;  
     int right = n - 1;   
 
   
