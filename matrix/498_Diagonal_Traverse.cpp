@@ -1,21 +1,61 @@
-// 498. Diagonal Traverse
-// Medium
-// Topics
-// premium lock icon
-// Companies
-// Given an m x n matrix mat, return an array of all the elements of the array in a diagonal order.
 
- 
+#include<stdio.h>
+#include<vector>
+#include<stdlib.h>
+#include<iostream>
 
-// Example 1:
+using namespace std;
 
+int main() {
 
-// Input: mat = [[1,2,3],[4,5,6],[7,8,9]]
-// Output: [1,2,4,7,5,3,6,8,9]
-// Example 2:
+    vector<vector<int>> mat = {
+        {1,2,3},
+        {4,5,6},
+        {7,8,9}
+    };
 
-// Input: mat = [[1,2],[3,4]]
-// Output: [1,2,3,4]
- 
+    int m = mat.size();
+    int n = mat[0].size();
 
+    vector<int> ans;
 
+    int row = 0, col = 0;
+    int direction = 1;
+
+    for(int i = 0; i < m * n; i++) {
+        ans.push_back(mat[row][col]);
+        if(direction == 1) {
+            if(col == n - 1) {
+                row++;
+                direction = -1;
+            }
+            else if(row == 0) {
+                col++;
+                direction = -1;
+            }
+            else {
+                row--;
+                col++;
+            }
+        }
+        else {
+            if(row == m - 1) {
+                col++;
+                direction = 1;
+            }
+            else if(col == 0) {
+                row++;
+                direction = 1;
+            }
+            else {
+                row++;
+                col--;
+            }
+        }
+    }
+
+    for(int i = 0; i < ans.size(); i++) {
+        cout << ans[i] << " ";
+    }
+    return 0;
+}
